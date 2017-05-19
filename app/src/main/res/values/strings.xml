@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Latest Movies Wallpapers</string>
+    <string name="title_activity_single_image">SingleImageActivity</string>
 </resources>

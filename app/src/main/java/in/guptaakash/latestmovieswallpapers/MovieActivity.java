@@ -10,30 +10,35 @@ import android.widget.Toast;
 
 import in.guptaakash.latestmovieswallpapers.adapter.ImageAdapter;
 
-public class SelectMovieActivity extends AppCompatActivity {
+public class MovieActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_movie);
+        setContentView(R.layout.activity_movie);
+        setTitle(getIntent().getExtras().get("EXTRA_MESSAGE").toString());
 
-        GridView gridview = (GridView) findViewById(R.id.movieGrid);
+
+        GridView gridview = (GridView) findViewById(R.id.moviePicsGrid);
         gridview.setAdapter(new ImageAdapter(this));
 
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(SelectMovieActivity.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(SelectMovieActivity.this,MovieActivity.class);
-                intent.putExtra("EXTRA_MESSAGE", position);
+                Intent intent = new Intent(MovieActivity.this,SingleImageActivity.class);
+                intent.putExtra("id", position);
                 startActivity(intent);
+
+                Toast.makeText(MovieActivity.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
             }
 
 
         });
 
     }
+
 }
+
